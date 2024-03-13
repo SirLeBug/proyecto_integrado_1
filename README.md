@@ -1,1 +1,3 @@
-# proyecto_integrado_1
+# Proyecto Integrado 1
+
+2D Platformer realizado por: Lorea y Daniel
