@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,12 +25,21 @@ public class SceneController : MonoBehaviour
 
     public void checkCoinsRemaining()
     {
-        textCoinsInfo.text = coinsRemaining.ToString() + " / " + coinsTotal.ToString();
+        //textCoinsInfo.text = coinsRemaining.ToString() + " / " + coinsTotal.ToString();
 
         if (coinsRemaining == 0) 
         {
             Debug.Log("Has recogido todas las frutas, enhorabuena!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            try
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+                Debug.Log("Juego Completado");
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ public class PlayerLives : MonoBehaviour
 
     public float spawnProtectionTimer;
     private bool collisionEnabled = true;
+    private int lives = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -20,26 +21,23 @@ public class PlayerLives : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        ColliderChecker(other);
-    }
+        if (other.gameObject.CompareTag("Obstacle") && collisionEnabled)
+        {
+            //death++;
 
-    public void ColliderChecker(Collider other)
-    {
+            //SetCountText();
+            lives--;
+            StartCoroutine(collideProtection());
+        }
+
         if (other.gameObject.CompareTag("Coin"))
         {
             other.gameObject.SetActive(false);
             //count++;
 
             //SetCountText();
-        }
-        if (other.gameObject.CompareTag("Obstacle") && collisionEnabled)
-        {
-            //death++;
-
-            //SetCountText();
-            StartCoroutine(collideProtection());
         }
     }
 
