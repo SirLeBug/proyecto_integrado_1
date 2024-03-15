@@ -1,13 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerLives : MonoBehaviour
 {
 
+    //public Animator animator;
+
     public float spawnProtectionTimer;
+    public int numberOfFlashes;
+    public float iFrameTime;
     private bool collisionEnabled = true;
     private int lives = 3;
+    private SpriteRenderer spriteRend;
+    
+
+    private void Awake()
+    {
+        spriteRend = GetComponent<SpriteRenderer>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +40,20 @@ public class PlayerLives : MonoBehaviour
             //death++;
 
             //SetCountText();
+
             lives--;
-            StartCoroutine(collideProtection());
+
+            if(lives <= 0)
+            {
+                PlayerDeath();
+                Debug.Log("You died");
+            } else
+            {
+                PlayerDamaged();
+                Debug.Log("Current lives: " + lives);
+                StartCoroutine(collideProtection());
+            }
+
         }
 
         if (other.gameObject.CompareTag("Coin"))
@@ -41,10 +65,31 @@ public class PlayerLives : MonoBehaviour
         }
     }
 
-    IEnumerator collideProtection()
+    public void PlayerDamaged()
+    {
+        //animator.Play("hit");
+
+    }
+
+    public void PlayerDeath()
+    {
+        //animator.Play("death");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private IEnumerator collideProtection()
     {
         collisionEnabled = false;
-        yield return new WaitForSeconds(spawnProtectionTimer);
+
+        for (int i = 0; i < numberOfFlashes; i++) 
+        {
+            spriteRend.color = new Color(1,0,0,0.5f);
+            yield return new WaitForSeconds(iFrameTime / (numberOfFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(iFrameTime / (numberOfFlashes * 2));
+        }
+        
         collisionEnabled = true;
+        
     }
 }
