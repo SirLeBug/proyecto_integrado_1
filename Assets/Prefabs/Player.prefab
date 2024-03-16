@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 558716008542133219}
   - component: {fileID: 2774699378348033846}
   - component: {fileID: 3785246457206080937}
-  - component: {fileID: 3317624395611862031}
   - component: {fileID: 8841898527020412068}
   m_Layer: 0
   m_Name: Player
@@ -254,8 +253,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0004556775, y: -0.001015186}
-  m_Size: {x: 0.1217918, y: 0.2068453}
+  m_Offset: {x: 0.0004556775, y: 0.003170997}
+  m_Size: {x: 0.1217918, y: 0.19847292}
   m_Direction: 0
 --- !u!114 &3785246457206080937
 MonoBehaviour:
@@ -269,47 +268,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8067da2f90338d24f9b2d2a50f00a192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 2.2
-  jumpSpeed: 3
+  runSpeed: 1.1
+  jumpSpeed: 2.5
   isGrounded: 0
   suelo:
     serializedVersion: 2
     m_Bits: 64
---- !u!70 &3317624395611862031
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5207617987175708232}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0004556775, y: -0.0010151863}
-  m_Size: {x: 0.12179175, y: 0.20684528}
-  m_Direction: 0
+  canMove: 1
 --- !u!114 &8841898527020412068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +290,9 @@ MonoBehaviour:
   spawnProtectionTimer: 2
   numberOfFlashes: 3
   iFrameTime: 1
+  RightHeart: {fileID: 0}
+  MiddleHeart: {fileID: 0}
+  LeftHeart: {fileID: 0}
 --- !u!1 &7862891347098107270
 GameObject:
   m_ObjectHideFlags: 0

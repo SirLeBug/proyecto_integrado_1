@@ -70,6 +70,20 @@ public class PlayerLives : MonoBehaviour
         }
     }
 
+    public bool canHeal()
+    {
+        return lives < 3;
+    }
+
+    public void healPlayer()
+    {
+        if(lives < 3)
+        {
+            lives++;
+            calculateHealth();
+        }
+    }
+
     public void calculateHealth()
     {
         switch (lives)
