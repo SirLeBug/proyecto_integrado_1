@@ -25,11 +25,11 @@ public class SceneController : MonoBehaviour
 
     public void checkCoinsRemaining()
     {
-        //textCoinsInfo.text = coinsRemaining.ToString() + " / " + coinsTotal.ToString();
+        textCoinsInfo.text = coinsRemaining.ToString() + " / " + coinsTotal.ToString();
 
         if (coinsRemaining == 0) 
         {
-            Debug.Log("Has recogido todas las frutas, enhorabuena!");
+            //Debug.Log("Has recogido todas las frutas, enhorabuena!");
 
             try
             {

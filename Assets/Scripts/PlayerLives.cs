@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerLives : MonoBehaviour
 {
@@ -14,11 +16,16 @@ public class PlayerLives : MonoBehaviour
     private bool collisionEnabled = true;
     private int lives = 3;
     private SpriteRenderer spriteRend;
-    
+    Animator animator;
+
+    public Image RightHeart;
+    public Image MiddleHeart;
+    public Image LeftHeart;
 
     private void Awake()
     {
         spriteRend = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -43,16 +50,14 @@ public class PlayerLives : MonoBehaviour
 
             lives--;
 
-            if(lives <= 0)
+            calculateHealth();
+
+            if(lives > 0)
             {
-                PlayerDeath();
-                Debug.Log("You died");
-            } else
-            {
-                PlayerDamaged();
-                Debug.Log("Current lives: " + lives);
                 StartCoroutine(collideProtection());
             }
+
+            
 
         }
 
@@ -65,16 +70,39 @@ public class PlayerLives : MonoBehaviour
         }
     }
 
-    public void PlayerDamaged()
+    public void calculateHealth()
     {
-        //animator.Play("hit");
+        switch (lives)
+        {
+            case 0:
+                RightHeart.color = new Color(1, 0, 0, 0.5f);
+                MiddleHeart.color = new Color(1, 0, 0, 0.5f);
+                LeftHeart.color = new Color(1, 0, 0, 0.5f);
+                StartCoroutine(playerDeath());
+                Debug.Log("You died");
+                break;
 
-    }
+            case 1:
+                Debug.Log("Current lives: " + lives);
+                RightHeart.color = new Color(1, 0, 0, 0.5f);
+                MiddleHeart.color = new Color(1, 0, 0, 0.5f);
+                LeftHeart.color = Color.white;
+                break;
 
-    public void PlayerDeath()
-    {
-        //animator.Play("death");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            case 2:
+                Debug.Log("Current lives: " + lives);
+                RightHeart.color = new Color(1, 0, 0, 0.5f);
+                MiddleHeart.color = Color.white;
+                LeftHeart.color = Color.white;
+                break;
+
+            case 3:
+                Debug.Log("Current lives: " + lives);
+                RightHeart.color = Color.white;
+                MiddleHeart.color = Color.white;
+                LeftHeart.color = Color.white;
+                break;
+        }
     }
 
     private IEnumerator collideProtection()
@@ -91,5 +119,13 @@ public class PlayerLives : MonoBehaviour
         
         collisionEnabled = true;
         
+    }
+
+    private IEnumerator playerDeath()
+    {
+        GetComponent<PlayerMove>().canMove = false;
+        animator.Play("death");
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

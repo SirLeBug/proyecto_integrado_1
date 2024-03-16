@@ -162,8 +162,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 2025646747, guid: 01e44e59b04a1d945ad1fdae90930c7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -184,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 5207617987175708232}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 76b0167523c28164fac2e6244b016cce, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3b94ed3c7c693464bb1310dea1291dfd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -220,7 +220,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &2774699378348033846
 CapsuleCollider2D:
@@ -254,8 +254,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0060983375, y: -0.006815389}
-  m_Size: {x: 0.20699881, y: 0.30636922}
+  m_Offset: {x: 0.0004556775, y: -0.001015186}
+  m_Size: {x: 0.1217918, y: 0.2068453}
   m_Direction: 0
 --- !u!114 &3785246457206080937
 MonoBehaviour:
@@ -282,7 +282,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5207617987175708232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -307,8 +307,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006098337, y: -0.006815389}
-  m_Size: {x: 0.2069988, y: 0.3063692}
+  m_Offset: {x: 0.0004556775, y: -0.0010151863}
+  m_Size: {x: 0.12179175, y: 0.20684528}
   m_Direction: 0
 --- !u!114 &8841898527020412068
 MonoBehaviour:
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnProtectionTimer: 2
   numberOfFlashes: 3
-  iFrameTime: 2
+  iFrameTime: 1
 --- !u!1 &7862891347098107270
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 7862891347098107270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0044619516, y: 1.03852, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -393,9 +393,9 @@ Camera:
     height: 1
   near clip plane: 0.03
   far clip plane: 1000
-  field of view: 19
+  field of view: 10
   orthographic: 0
-  orthographic size: 1.53
+  orthographic size: 2.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
