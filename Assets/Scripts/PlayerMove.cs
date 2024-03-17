@@ -50,12 +50,11 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-
+        // Show Raycast Line
         Debug.DrawLine(transform.position, new Vector3(0, -0.17f,0)+transform.position);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.17f, suelo);
         if (hit.collider != null)
         {
-            //Debug.Log(hit.collider);
             isGrounded = true;
             animator.SetBool("Jump", false);
         }
@@ -68,6 +67,7 @@ public class PlayerMove : MonoBehaviour
     }
 
 
+    //Unused method, kept for convenience
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("platformMoving") && isGrounded)

@@ -6,34 +6,23 @@ using UnityEngine.SceneManagement;
 public class ButtonScript : MonoBehaviour
 {
 
-    public AudioSource sound;
-
-    public void StartButton()
+    public void Level1()
     {
-        sound.Play();
         SceneManager.LoadScene(1);
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void ExitButton()
     {
-        sound.Play();
         Application.Quit();
     }
 
     public void MenuButton()
     {
-        sound.Play();
         SceneManager.LoadScene(0);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

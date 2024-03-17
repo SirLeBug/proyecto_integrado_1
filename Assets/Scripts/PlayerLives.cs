@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class PlayerLives : MonoBehaviour
 {
 
-    //public Animator animator;
-
     public float spawnProtectionTimer;
     public int numberOfFlashes;
     public float iFrameTime;
@@ -39,25 +37,10 @@ public class PlayerLives : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Obstacle") && collisionEnabled)
         {
-            //death++;
-
-            //SetCountText();
 
             lives--;
 
@@ -74,10 +57,7 @@ public class PlayerLives : MonoBehaviour
 
         if (other.gameObject.CompareTag("Coin"))
         {
-            other.gameObject.SetActive(false);
-            //count++;
-
-            //SetCountText();
+            //Unused
         }
 
         if (other.gameObject.CompareTag("Powerup"))
@@ -166,13 +146,9 @@ public class PlayerLives : MonoBehaviour
     public IEnumerator playerBuff()
     {
         canBuff = false;
-        //MushroomBuff.enabled = true;
-        //float oriSpeed = GameObject.Find("Player").GetComponent<PlayerMove>().runSpeed;
-        //float oriJump = GameObject.Find("Player").GetComponent<PlayerMove>().jumpSpeed;
         GameObject.Find("Player").GetComponent<PlayerMove>().runSpeed = buffSpeed;
         GameObject.Find("Player").GetComponent<PlayerMove>().jumpSpeed = buffJump;
         yield return new WaitForSeconds(5);
-        //MushroomBuff.enabled = false;
         GameObject.Find("Player").GetComponent<PlayerMove>().runSpeed = oriSpeed;
         GameObject.Find("Player").GetComponent<PlayerMove>().jumpSpeed = oriJump;
         canBuff = true;

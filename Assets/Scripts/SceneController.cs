@@ -29,16 +29,13 @@ public class SceneController : MonoBehaviour
 
         if (coinsRemaining == 0) 
         {
-            //Debug.Log("Has recogido todas las frutas, enhorabuena!");
 
-            try
+            if(! (SceneManager.GetActiveScene().buildIndex == 2))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            catch (Exception e)
+            } else
             {
-                Debug.Log(e);
-                Debug.Log("Juego Completado");
+                SceneManager.LoadScene(0);
             }
         }
     }

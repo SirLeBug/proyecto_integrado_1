@@ -19,11 +19,6 @@ public class ShadowWalk : MonoBehaviour
         StartCoroutine(shadowStep());
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        //StartCoroutine(shadowStep());
-    }
     private IEnumerator shadowStep()
     {
         rb2D.velocity = new Vector2(1.1f, rb2D.velocity.y);
