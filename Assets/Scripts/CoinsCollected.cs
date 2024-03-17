@@ -13,7 +13,7 @@ public class CoinsCollected : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //gameObject.transform.GetChild(0).gameObject.SetActive(true);
             //sound.Play();
             GameObject.Find("ControlCenter").GetComponent<SceneController>().coinsRemaining--;
             GameObject.Find("ControlCenter").GetComponent<SceneController>().checkCoinsRemaining();

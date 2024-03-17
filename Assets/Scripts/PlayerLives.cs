@@ -18,14 +18,25 @@ public class PlayerLives : MonoBehaviour
     private SpriteRenderer spriteRend;
     Animator animator;
 
+    public float oriSpeed;
+    public float oriJump;
+    public float buffSpeed = 2.2f;
+    public float buffJump = 4f;
+    public bool canBuff = true;
+
     public Image RightHeart;
     public Image MiddleHeart;
     public Image LeftHeart;
+    public Image MushroomBuff;
 
     private void Awake()
     {
         spriteRend = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        oriSpeed = GameObject.Find("Player").GetComponent<PlayerMove>().runSpeed;
+        oriJump = GameObject.Find("Player").GetComponent<PlayerMove>().jumpSpeed;
+        canBuff = true;
+
     }
 
     // Start is called before the first frame update
@@ -67,6 +78,15 @@ public class PlayerLives : MonoBehaviour
             //count++;
 
             //SetCountText();
+        }
+
+        if (other.gameObject.CompareTag("Powerup"))
+        {
+            if(canBuff)
+            {
+                StartCoroutine(playerBuff());
+                StartCoroutine(buffBlink());    
+            }
         }
     }
 
@@ -141,5 +161,32 @@ public class PlayerLives : MonoBehaviour
         animator.Play("death");
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public IEnumerator playerBuff()
+    {
+        canBuff = false;
+        //MushroomBuff.enabled = true;
+        //float oriSpeed = GameObject.Find("Player").GetComponent<PlayerMove>().runSpeed;
+        //float oriJump = GameObject.Find("Player").GetComponent<PlayerMove>().jumpSpeed;
+        GameObject.Find("Player").GetComponent<PlayerMove>().runSpeed = buffSpeed;
+        GameObject.Find("Player").GetComponent<PlayerMove>().jumpSpeed = buffJump;
+        yield return new WaitForSeconds(5);
+        //MushroomBuff.enabled = false;
+        GameObject.Find("Player").GetComponent<PlayerMove>().runSpeed = oriSpeed;
+        GameObject.Find("Player").GetComponent<PlayerMove>().jumpSpeed = oriJump;
+        canBuff = true;
+    }
+
+    private IEnumerator buffBlink()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            MushroomBuff.color = new Color(1, 0.9309688f, 0, 1);
+            yield return new WaitForSeconds(0.5f);
+            MushroomBuff.color = Color.white;
+            yield return new WaitForSeconds(0.5f);
+        }
+        MushroomBuff.color = new Color(1, 1, 1, 0);
     }
 }

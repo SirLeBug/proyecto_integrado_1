@@ -51,8 +51,8 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        Debug.DrawLine(transform.position, new Vector3(0, -0.2f,0)+transform.position);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.22f, suelo);
+        Debug.DrawLine(transform.position, new Vector3(0, -0.17f,0)+transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.17f, suelo);
         if (hit.collider != null)
         {
             //Debug.Log(hit.collider);
@@ -91,7 +91,6 @@ public class PlayerMove : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
-        Debug.Log("esta en el aire");
         transform.SetParent(null);
     }
 }

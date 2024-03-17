@@ -25,7 +25,7 @@ public class SceneController : MonoBehaviour
 
     public void checkCoinsRemaining()
     {
-        textCoinsInfo.text = coinsRemaining.ToString() + " / " + coinsTotal.ToString();
+        textCoinsInfo.text = (coinsTotal - coinsRemaining).ToString() + " / " + coinsTotal.ToString();
 
         if (coinsRemaining == 0) 
         {
