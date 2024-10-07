@@ -1,3 +1,3 @@
-# Proyecto Integrado 1
+# Project SkullCandy
 
-Proyecto integrado 2D Platformer realizado por Lorea y Daniel
+Project SkullCandy was a collaborative 2 week project with my friend and coleague Iván Lorea.
